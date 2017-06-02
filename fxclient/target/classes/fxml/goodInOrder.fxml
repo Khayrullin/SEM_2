@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.collections.FXCollections?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="1006.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.itis.kpfu.GoodInOrderController">
+   <children>
+      <SplitPane dividerPositions="0.8786482334869432" layoutX="329.0" layoutY="162.0" orientation="VERTICAL" prefHeight="653.0" prefWidth="1006.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TableView prefHeight="653.0" prefWidth="1006.0">
+                    <columns>
+                      <TableColumn id="column1" fx:id="goodColumn" editable="false" prefWidth="260.0" text="Good Name" />
+                      <TableColumn id="column2" fx:id="orderColumn" editable="false" prefWidth="345.0" text="Order" />
+                        <TableColumn id="column3" fx:id="countColumn" maxWidth="769.0" minWidth="0.0" prefWidth="75.0" text="Count" />
+                        <TableColumn id="column4" fx:id="orderStatus" maxWidth="769.0" minWidth="0.0" prefWidth="284.0" text="Status">
+                           <graphic>
+                              <ChoiceBox fx:id="OrdStatus" prefWidth="150.0">
+                               <items>
+                                   <FXCollections fx:factory="observableArrayList">
+                                       <String fx:value="FORMATION" />
+                                       <String fx:value="DONE" />
+                                       <String fx:value="RECRUITING" />
+                                       <String fx:value="SENDING" />
+                                   </FXCollections>
+                               </items>
+                           </ChoiceBox>
+                           </graphic>
+                        </TableColumn>
+                    </columns>
+                  </TableView>
+                  <ScrollBar layoutY="39.0" orientation="VERTICAL" prefHeight="526.0" prefWidth="22.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="970.0" AnchorPane.topAnchor="39.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+        </items>
+      </SplitPane>
+      <Pagination fx:id="pagination" layoutX="403.0" layoutY="579.0" prefHeight="74.0" prefWidth="1006.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="579.0" />
+      <Button id="button" fx:id="saveButton" layoutX="716.0" layoutY="588.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="275.0" text="Save all" />
+   </children>
+</AnchorPane>

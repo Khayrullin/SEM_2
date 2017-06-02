@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.web.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="1006.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.itis.kpfu.GoodOnHubController">
+    <children>
+      <TabPane prefHeight="653.0" prefWidth="1004.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab onSelectionChanged="#initialize" text="Goods on hubs">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="406.0" prefWidth="1004.0">
+                     <children>
+                              <TableView fx:id="table" editable="true" prefHeight="520.0" prefWidth="1006.0">
+                                  <columns>
+                                      <TableColumn id="column0" fx:id="id" prefWidth="51.0" text="LineId" />
+                                      <TableColumn id="column1" fx:id="goodColumn" prefWidth="387.0" text="Good Name" />
+                                      <TableColumn id="column2" fx:id="hubColumn" maxWidth="472.0" prefWidth="334.0" text="Hub" />
+                                      <TableColumn id="column3"   fx:id="countColumn" maxWidth="769.0" minWidth="0.0" prefWidth="228.0" text="Count" />
+                                  </columns>
+                              </TableView>
+                        <AnchorPane layoutY="522.0" prefHeight="84.0" prefWidth="1004.0">
+                           <children>
+                              <Pagination fx:id="pagination" layoutX="366.0" layoutY="8.0" onMouseMoved="#initialize" prefHeight="60.0" prefWidth="238.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab onSelectionChanged="#initializeSecTable" text="Goods in order">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="447.0" prefWidth="1004.0">
+                     <children>
+                        <TableView fx:id="table1" editable="true" prefHeight="515.0" prefWidth="1006.0">
+                           <columns>
+                              <TableColumn id="column0" fx:id="id1" prefWidth="51.0" text="Line Id" />
+                              <TableColumn id="column1" fx:id="goodColumn1" prefWidth="239.0" text="Good Name" />
+                              <TableColumn id="column2" fx:id="orderColumn1" maxWidth="472.0" prefWidth="221.0" text="Order" />
+                              <TableColumn id="column3" fx:id="countColumn1"  maxWidth="769.0" minWidth="0.0" prefWidth="250.0" text="Count" />
+                              <TableColumn  id="column4" fx:id="statusColumn1"   maxWidth="769.0" minWidth="0.0" prefWidth="240.0" text="Status" />
+                           </columns>
+                        </TableView>
+                        <AnchorPane layoutY="518.0" prefHeight="16.0" prefWidth="1004.0">
+                           <children>
+                              <Pagination fx:id="pagination1" layoutX="366.0" layoutY="8.0" onMouseMoved="#initializeSecTable" prefHeight="60.0" prefWidth="238.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+    </children>
+</AnchorPane>

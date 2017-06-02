@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <security:http auto-config="true" access-denied-page="/forbidden" use-expressions="true">
+        <security:intercept-url pattern="/calculator/**" access="hasAnyRole('ROLE_BUYER', 'ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/goods/adminGoodsPage" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/adminPage" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/goods/basket" access="hasAnyRole('ROLE_BUYER', 'ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/goods/addGoodToCart" access="hasAnyRole('ROLE_BUYER', 'ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/goods/myOrders" access="hasAnyRole('ROLE_BUYER', 'ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/goods/order" access="hasAnyRole('ROLE_BUYER', 'ROLE_ADMIN')"/>
+
+       <!-- <security:intercept-url pattern="/login" access="isAnonymous"/>-->
+        <!--<security:intercept-url pattern="/**" requires-channel="https"/>-->
+        <security:form-login
+                login-page="/login"
+                login-processing-url="/login/process"
+                username-parameter="login"
+                password-parameter="password"
+                authentication-failure-url="/login?error=true"/>
+
+        <security:logout logout-url="/logout"/>
+
+        <security:form-login
+                login-page="/api/login"
+                login-processing-url="/login/process"
+                username-parameter="login"
+                password-parameter="password"
+                authentication-failure-url="/login?error=true"/>
+
+        <security:logout logout-url="/api/logout"/>
+
+        <!--<security:remember-me key="wegwe" token-validity-seconds="2500000" remember-me-parameter=""-->
+    </security:http>
+
+    <security:authentication-manager>
+        <security:authentication-provider ref="authProvider">
+            <!--<security:user-service>-->
+                <!--<security:user name="user" authorities="ROLE_USER" password="user"/>-->
+                <!--<security:user name="admin" authorities="ROLE_ADMIN" password="admin"/>-->
+                <!--<security:user name="oleg" authorities="ROLE_OLEG" password="oleg"/>-->
+            <!--</security:user-service>-->
+            <!--<security:password-encoder ref="encoder"/>-->
+
+            <!--<security:jdbc-user-service data-source-ref="dataSource"-->
+                                        <!--users-by-username-query="SELECT username, password, TRUE FROM users WHERE username =?"-->
+                                        <!--authorities-by-username-query="SELECT username, 'ROLE_USER' from users WHERE username=?"/>-->
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
+    <bean id="authProvider" class="ru.kpfu.itis.security.AuthProviderImpl"/>
+
+    <security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>
+</beans>
